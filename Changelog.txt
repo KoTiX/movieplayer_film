@@ -1,6 +1,6 @@
 Changelog:
 
-14/10/2010 - Finally added the movieplayer.it own search (they removed the base64 encoding). Added one option in settings for Google search and anothe rone to get just one or more Posters from MP. The version bump now to 1.1.0 :P
+14/10/2010 - Finally added the movieplayer.it own search (they removed the base64 encoding). Added one option in settings for Google search and anothe rone to get just one or more Posters from MP. Added Polish Translation. The version bump now to 1.1.0 :P
 29/09/2010 - Updated GetImdbStuff function to match IMDb latest site changes
 28/08/2010 - Reduced movieplayer.it fanarts pages just to the summary one to improve speed
 27/08/2010 - Changed the search string for better results. Version now is 1.0.9
