@@ -2,7 +2,7 @@
 <scraper framework="11" date="2010-10-14">
 
 	<NfoUrl dest="3">
-		<RegExp input="$$1" output="\1" dest="3">
+		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
 			<expression noclean="1" trim="1">(http://www\.movieplayer\.it/film/[0-9]+/[^"]+)</expression>
 		</RegExp>
 	</NfoUrl>
