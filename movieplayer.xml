@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<scraper framework="1.1" date="2011-07-09">
+<scraper framework="1.1" date="2011-07-10">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
 			<expression trim="1" noclean="1">(http://www\.movieplayer\.it/film/[^_]+_[0-9]+/)</expression>
 		</RegExp>
 	</NfoUrl>
        <CreateSearchUrl dest="3">
-               <RegExp conditional="!Google" input="$$1" output="&lt;url&gt;http://www.movieplayer.it/ricerca/?t=film&amp;q=\1$$4&lt;/url&gt;" dest="3">
+               <RegExp conditional="!Google" input="$$1" output="&lt;url&gt;http://www.movieplayer.it/ricerca/?t=film&amp;q=\1&lt;/url&gt;" dest="3">
                        <RegExp input="$$2" output="%20(\1)" dest="4">
                                <expression clear="yes">(.+)</expression>
                        </RegExp>
                        <expression noclean="1" />
                </RegExp>
-               <RegExp conditional="Google" input="$$1" output="&lt;url&gt;http://it.bing.com/search?q=%28%28\1$$4+OR+\1%29+OR+%28%28\1$$4+OR+\1%29+intitle%3A\1%29%29+site%3Amovieplayer.it%2Ffilm%2F+-site%3Amovieplayer.it%2Ffilm%2Fnews%2F+-site%3Amovieplayer.it%2Ffilm%2Farticoli%2F&amp;count=$INFO[count]&lt;/url&gt;" dest="3">
+               <RegExp conditional="Google" input="$$1" output="&lt;url&gt;http://it.bing.com/search?q=\1$$4+site%3Amovieplayer.it%2Ffilm%2F+-site%3Amovieplayer.it%2Ffilm%2Fnews%2F+-site%3Amovieplayer.it%2Ffilm%2Farticoli%2F&amp;count=$INFO[count]&lt;/url&gt;" dest="3">
                        <RegExp input="$$2" output="%20(\1)" dest="4">
                                <expression clear="yes">(.+)</expression>
                        </RegExp>
