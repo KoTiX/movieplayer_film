@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><scraper framework="11" date="2011-08-06" name="" content="movies" language="en">
+﻿<?xml version="1.0" encoding="utf-8"?><scraper framework="11" date="2011-08-07" name="New Scraper" content="movies" language="en">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
 			<expression trim="1" noclean="1">(http://www\.movieplayer\.it/film/[^_]+_[0-9]+/)</expression>
@@ -42,10 +42,18 @@
 			<RegExp input="$$1" output="&lt;year&gt;\2&lt;/year&gt;" dest="13+">
 				<expression trim="1" noclean="1">&lt;meta property="og:title" content="(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)? \([^\(]*?([0-9]{4})\)</expression>
 			</RegExp>
+			<!--Try OriginalTitle (put Title just in case MP site hasn't original title)-->
+			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="13+">
+				<!--Try OriginalTitle (if MP site has original title, take it)-->
+				<RegExp input="$$1" output="&lt;originaltitle&gt;\2&lt;/originaltitle&gt;" dest="13+">
+					<expression trim="1" noclean="1">&lt;span itemprop="description"&gt;&lt;strong&gt;(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)?&lt;/strong&gt; \(([^/"]*)\) </expression>
+				</RegExp>
+				<expression trim="1" noclean="1">&lt;span itemprop="description"&gt;&lt;strong&gt;(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)?&lt;/strong&gt;</expression>
+			</RegExp>
 			<!--IMDB details-->
-			<RegExp input="$$9" output="&lt;url cache=&quot;\1-main.html&quot; function=&quot;GetImdbLink&quot;&gt;http://www.imdb.it/find?s=tt;q=\1&lt;/url&gt;" dest="13+">
+			<RegExp input="$$9" output="&lt;url cache=&quot;\1-main.html&quot; function=&quot;GetImdbStuff&quot;&gt;http://akas.imdb.com/find?s=tt;q=\1&lt;/url&gt;" dest="13+">
 				<RegExp input="$$13" output="\1%20" dest="9">
-					<expression clear="yes" noclean="1" encode="1">&lt;title&gt;([^/"]*)&lt;/title&gt;</expression>
+					<expression clear="yes" noclean="1" encode="1">&lt;originaltitle&gt;([^/"]*)&lt;/originaltitle&gt;</expression>
 				</RegExp>
 				<RegExp input="$$13" output="(\1)" dest="9+">
 					<expression>&lt;year&gt;([^/"]*)&lt;/year&gt;</expression>
@@ -195,15 +203,6 @@
 			<RegExp input="$$2" output="&lt;chain function=&quot;GetIMDBThumbsById&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
 				<expression />
 			</RegExp>
-			<expression noclean="1" />
-		</RegExp>
-	</GetImdbStuff>
-	<GetTMDBdbStuff dest="5">
-		<RegExp input="$$6" output="&lt;details&gt;\1&lt;/details&gt;" dest="5+">
-			<!--ID titolo su buffer 2-->
-			<RegExp input="$$1" output="\1" dest="2">
-				<expression>/title/([t0-9]*)</expression>
-			</RegExp>
 			<!--Poster from TMDB-->
 			<RegExp conditional="posterTMDB" input="$$2" output="&lt;chain function=&quot;GetTMDBThumbsByIdChain&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
 				<expression />
@@ -214,7 +213,7 @@
 			</RegExp>
 			<expression noclean="1" />
 		</RegExp>
-	</GetTMDBdbStuff>
+	</GetImdbStuff>
 	<FanartGrabber clearbuffers="no" dest="13">
 		<!--in main page-->
 		<RegExp conditional="!Fan" input="$$1" output="\1" dest="6">
