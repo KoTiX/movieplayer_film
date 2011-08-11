@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><scraper framework="11" date="2011-08-11" name="New Scraper" content="movies" language="en">
+﻿<?xml version="1.0" encoding="utf-8"?><scraper framework="11" date="2011-08-12" name="New Scraper" content="movies" language="en">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
 			<expression trim="1" noclean="1">(http://www\.movieplayer\.it/film/[^_]+_[0-9]+/)</expression>
@@ -151,9 +151,13 @@
 			<RegExp input="$$1" output="\1" dest="2">
 				<expression>/title/([t0-9]*)</expression>
 			</RegExp>
+			<!--ID-->
+			<RegExp input="$$1" output="&lt;id&gt;\1&lt;/id&gt;" dest="6+">
+				<expression>/title/([t0-9]*)</expression>
+			</RegExp>
 			<!--IMDB MPAA-->
 			<RegExp input="$$1" output="&lt;mpaa&gt;\1&lt;/mpaa&gt;" dest="6+">
-				<expression>MPAA&lt;/a&gt;\)&lt;/h4&gt;\n?([^&lt;]*)</expression>
+				<expression>MPAA&lt;/a&gt;\)&lt;/h4&gt;\n&lt;span itemprop="contentRating"&gt;?([^&lt;]*)&lt;/span&gt;</expression>
 			</RegExp>
 			<!--IMDB rating-->
 			<RegExp input="$$2" output="&lt;chain function=&quot;GetIMDBRatingById&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
@@ -179,10 +183,6 @@
 			<RegExp input="$$1" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="6+">
 				<expression trim="1">&lt;h4[^&gt;]*?&gt;Runtime:&lt;/h4&gt;[^0-9]*([0-9]+)</expression>
 			</RegExp>
-			<!--Titolo Originale
-			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="6+">
-				<expression>&lt;meta name="title" content="(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)? \([^\(]*?([0-9]{4})\)</expression>
-			</RegExp>-->
 			<!--Country-->
 			<RegExp input="$$1" output="&lt;country&gt;\1&lt;/country&gt;" dest="6+">
 				<expression repeat="yes">&lt;a href="/country/[^&gt;]+&gt;([^&lt;]+)</expression>
