@@ -128,7 +128,7 @@
 			</RegExp>
 			<!--IMDB MPAA-->
 			<RegExp input="$$1" output="&lt;mpaa&gt;\1&lt;/mpaa&gt;" dest="6+">
-				<expression>MPAA&lt;/a&gt;\)&lt;/h4&gt;\n&lt;span itemprop="contentRating"&gt;?([^&lt;]*)&lt;/span&gt;</expression>
+				<expression>MPAA&lt;/a&gt;\)&lt;/h4&gt;\n?&lt;span itemprop=&quot;contentRating&quot;&gt;([^&lt;]*)</expression>
 			</RegExp>
 			<!--IMDB rating-->
 			<RegExp input="$$2" output="&lt;chain function=&quot;GetIMDBRatingById&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
@@ -145,10 +145,6 @@
 			<!--IMDB top250-->
 			<RegExp input="$$1" output="&lt;top250&gt;\1&lt;/top250&gt;" dest="6+">
 				<expression>Top 250 #([0-9]*)&lt;/</expression>
-			</RegExp>
-			<!--Anno-->
-			<RegExp input="$$1" output="&lt;year&gt;\2&lt;/year&gt;" dest="6+">
-				<expression>&lt;meta name="title" content="([^"]*?) \([^\(]*?([0-9]{4})\)</expression>
 			</RegExp>
 			<!--Durata-->
 			<RegExp input="$$1" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="6+">
