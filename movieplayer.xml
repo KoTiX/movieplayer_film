@@ -42,13 +42,21 @@
 			<RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;" dest="13+">
 				<expression trim="1" noclean="1">&lt;span class="year"&gt;.*?anno=([0-9]*)"&gt;</expression>
 			</RegExp>
-			<!--Try OriginalTitle (put Title just in case MP site hasn't original title)-->
-			<RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="13+">
-				<!--Try OriginalTitle (if MP site has original title, take it)-->
-				<RegExp input="$$1" output="&lt;originaltitle&gt;\2&lt;/originaltitle&gt;" dest="13+">
-					<expression trim="1" noclean="1">&lt;span itemprop="description"&gt;&lt;strong&gt;(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)?&lt;/strong&gt; \(([^/"]*)\) </expression>
+			<!--Original title-->
+			<RegExp input="$$4" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="13+">
+				<!--Try OriginalTitle (putTitle just in case MP site hasn't original title) & (get before)-->
+				<RegExp input="$$1" output="\1" dest="4">
+					<expression noclean="1">&lt;span itemprop="description"&gt;&lt;strong&gt;(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)?&lt;/strong&gt;</expression>
 				</RegExp>
-				<expression trim="1" noclean="1">&lt;span itemprop="description"&gt;&lt;strong&gt;(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)?&lt;/strong&gt;</expression>
+				<!--Try OriginalTitle (if MP site has original title, take it)-->
+				<RegExp input="$$1" output="\2" dest="3">
+					<expression cs="true" clear="yes" noclean="1">&lt;span itemprop="description"&gt;&lt;strong&gt;(?:&amp;#x22;)?([^"]*?)(?:&amp;#x22;)?&lt;/strong&gt; \(([^/"]*)\) </expression>
+				</RegExp>
+				<!--Test if exist a real original film title if exist overwrite normal title-->
+				<RegExp input="$$3" output="\1" dest="4">
+					<expression>(.+)</expression>
+				</RegExp>
+				<expression noclean="1" />
 			</RegExp>
 			<!--IMDB details-->
 			<RegExp input="$$9" output="&lt;url cache=&quot;\IMDB_Search.html&quot; function=&quot;GetImdbStuff&quot;&gt;http://akas.imdb.com/find?s=tt;q=\1&lt;/url&gt;" dest="13+">
