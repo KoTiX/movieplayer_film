@@ -192,7 +192,7 @@
 			</RegExp>
 			<!--Country-->
 			<RegExp input="$$1" output="&lt;country&gt;\1&lt;/country&gt;" dest="6+">
-				<expression repeat="yes">"/country/[^&gt;]+&gt;([^&lt;]+)&lt;/a&gt;</expression>
+				<expression>"/country/[^&gt;]+&gt;([^&lt;]+)&lt;/a&gt;</expression>
 			</RegExp>
 			<expression noclean="1" />
 		</RegExp>
