@@ -2,7 +2,7 @@
 <addon id="metadata.movieplayer.it"
        name="MoviePlayer.it"
        version="1.4.1"
-       provider-name="KoTiX and Gulp">
+       provider-name="KoTiX|Gulp">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0"/>
     <import addon="metadata.common.themoviedb.org" version="2.1.0"/>
