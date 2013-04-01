@@ -170,10 +170,6 @@
 			<RegExp input="$$2" output="&lt;chain function=&quot;GetIMDBUSACert&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
 				<expression />
 			</RegExp>
-			<!--AKA Titles-->
-			<RegExp input="$$2" output="&lt;chain function=&quot;GetIMDBAKATitlesById&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
-				<expression />
-			</RegExp>
 			<!--Sceneggiatura-->
 			<RegExp input="$$2" output="&lt;chain function=&quot;GetIMDBWritersById&quot;&gt;$$2&lt;/chain&gt;" dest="6+">
 				<expression />
