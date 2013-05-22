@@ -55,8 +55,7 @@
 				<!--Test if exist a real original film title if exist overwrite normal title-->
 				<RegExp input="$$3" output="\1" dest="4">
 					<expression>(.+)</expression>
-				</RegExp>
-				
+				</RegExp>				
 				<!-- IMDB doesn't like II or III or IV in the title, so replace them with numbers -->
 				<RegExp input="$$4" output="\1 2" dest="4">
 					<expression>^(.+) II$</expression>
@@ -66,8 +65,7 @@
 				</RegExp>
 				<RegExp input="$$4" output="\1 4" dest="4">
 					<expression>^(.+) IV$</expression>
-				</RegExp>
-				
+				</RegExp>				
 				<expression noclean="1" />
 			</RegExp>
 			<!--IMDB details-->
