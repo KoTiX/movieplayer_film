@@ -5,13 +5,13 @@
 		</RegExp>
 	</NfoUrl>
 	<CreateSearchUrl dest="3">
-		<RegExp conditional="!bing" input="$$1" output="&lt;url&gt;http://www.movieplayer.it/ricerca/?t=film&amp;q=\1&lt;/url&gt;" dest="3">
+		<RegExp conditional="!Bing" input="$$1" output="&lt;url&gt;http://www.movieplayer.it/ricerca/?t=film&amp;q=\1&lt;/url&gt;" dest="3">
 			<!--RegExp conditional="Year" input="$$2" output="%20(\1)" dest="4">
 				<expression clear="yes">(.+)</expression>
 			</RegExp-->
 			<expression noclean="1" />
 		</RegExp>
-		<RegExp conditional="bing" input="$$1" output="&lt;url&gt;http://it.bing.com/search?q=&quot;\1$$4&quot;+site%3Amovieplayer.it%2Ffilm%2F+-site%3Amovieplayer.it%2Ffilm%2Fnews%2F+-site%3Amovieplayer.it%2Ffilm%2Farticoli%2F+-site%3Amovieplayer.it%2Ffilm%2Fprossimamente%2F+-site%3Amovieplayer.it%2Ffilm%2Fboxoffice%2F&amp;count=$INFO[count]&lt;/url&gt;" dest="3">
+		<RegExp conditional="Bing" input="$$1" output="&lt;url&gt;http://it.bing.com/search?q=&quot;\1$$4&quot;+site%3Amovieplayer.it%2Ffilm%2F+-site%3Amovieplayer.it%2Ffilm%2Fnews%2F+-site%3Amovieplayer.it%2Ffilm%2Farticoli%2F+-site%3Amovieplayer.it%2Ffilm%2Fprossimamente%2F+-site%3Amovieplayer.it%2Ffilm%2Fboxoffice%2F&amp;count=$INFO[count]&lt;/url&gt;" dest="3">
 			<RegExp conditional="Year" input="$$2" output="%20(film+\1)" dest="4">
 				<expression clear="yes">(.+)</expression>
 			</RegExp>
@@ -19,13 +19,13 @@
 		</RegExp>
 	</CreateSearchUrl>
 	<GetSearchResults dest="8">
-		<RegExp conditional="!bing" input="$$7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="8">
+		<RegExp conditional="!Bing" input="$$7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="8">
 			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2 \3&lt;/title&gt;&lt;url cache=&quot;MoviePlayerPage.html&quot; spoof=&quot;http://www.movieplayer.it/film/\1/&quot;&lt;/url&gt;&lt;id&gt;\1&lt;/id&gt;&lt;/entity&gt;" dest="7">
 				<expression repeat="yes">&lt;a href="/film/([^/]*)/"&gt;([^&lt;]*)&lt;/a&gt;&Lt;/h2&gt;.+?&lt;span class="search-results-result-date"&gt;.+?([0-9]+)&lt;/span&gt;</expression>
 			</RegExp>
 			<expression clear="yes" trim="1" noclean="1" />
 		</RegExp>
-		<RegExp conditional="bing" input="$$7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; standalone=&quot;yes&quot;?&gt;&lt;results sorted=&quot;yes&quot;&gt;\1&lt;/results&gt;" dest="8">
+		<RegExp conditional="Bing" input="$$7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; standalone=&quot;yes&quot;?&gt;&lt;results sorted=&quot;yes&quot;&gt;\1&lt;/results&gt;" dest="8">
 			<RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\3 (\4)&lt;/title&gt;&lt;url cache=&quot;MoviePlayerPage.html&quot; spoof=&quot;http://www.movieplayer.it/film/\1_\2/&quot;&gt;http://www.movieplayer.it/film/\1_\2/&lt;/url&gt;&lt;id&gt;\1&lt;/id&gt;&lt;/entity&gt;" dest="7">
 				<expression repeat="yes">http://(?:www\.)?movieplayer\.it/film/([^_]*)_([0-9]+)/"[^&gt;]+>(.+?)\s*-\s*film\s*([0-9]+)</expression>
 			</RegExp>
