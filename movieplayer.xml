@@ -65,7 +65,7 @@
 						<span class="film-extra-info-label">Titolo originale:</span>
 						<span class="film-extra-info-value">nomefilmoriginale</span>
 					-->
-					<expression noclean="1">&lt;span class="film-extra-info-label"&gt;Titolo originale:&lt;/span&gt;\s*&lt;span class="film-extra-info-value"&gt;([^&lt;]+)&lt;/span&gt;</expression>
+					<expression cs="true" clear="yes" noclean="1">&lt;span class="film-extra-info-label"&gt;Titolo originale:&lt;/span&gt;\s*&lt;span class="film-extra-info-value"&gt;([^&lt;]+)&lt;/span&gt;</expression>
 				</RegExp>
 
 				<!--Se esiste il titolo originale, sovrascrivo il titolo italiano-->
