@@ -144,8 +144,8 @@
 			</RegExp>
 
 			<!--Trailer-->
-			<RegExp input="$$1" output="&lt;trailer&gt;http://nl.video.\1&lt;/trailer&gt;" dest="13+">
-				<expression>setupObject.file = "http://nl.video.([^"]*)";</expression>
+			<RegExp input="$$1" output="&lt;url cache=&quot;\MoviePlayerTrailer.html&quot; spoof=&quot;http://www.movieplayer.it/\1/&quot; function=&quot;GetMPTrailer&quot;&gt;http://www.movieplayer.it/\1&lt;/url&gt;" dest="13+">
+				<expression>href="(?!/video/video-recensione)[^"]+"\s+data-gallery-iframe="/([^"]+)"</expression>
 			</RegExp>
 
 			<!--Posters-->
@@ -160,6 +160,20 @@
 			<expression noclean="1" />
 		</RegExp>
 	</GetDetails>
+
+	<!-- Get Trailer from MP -->
+	<GetMPTrailer dest="13">
+		<RegExp input="$$2" output="&lt;details&gt;\1&lt;/details&gt;" dest="13+">
+			<RegExp input="$$1" output="&lt;trailer&gt;\1&lt;/trailer&gt;" dest="2">
+				<!--
+					HTML (JSON) da matchare:
+					{ file: "http://video.movieplayer.it/trailer/2014/01/21/trailer-italiano-3-300-l-alba-di-un-impero-16653_hi.mp4", label: "720p HD", "default": true }
+				-->
+				<expression noclean="1">{ file: "([^"]+)", [^,]+, "default": true }</expression>
+			</RegExp>
+			<expression noclean="1" />
+		</RegExp>
+	</GetMPTrailer>
 
 	<!-- GetPosters from MP -->
 	<GetMPPosters dest="13">
