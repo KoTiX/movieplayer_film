@@ -127,7 +127,7 @@
 						</span>
 					</p>
 				-->
-				<expression noclean="1">&lt;p itemprop="description"[^&gt;]+&gt;(.+?)&lt;/p&gt;</expression>
+				<expression noclean="1">&lt;p itemprop="description"[^&gt;]*&gt;(.+?)&lt;/p&gt;</expression>
 			</RegExp>
 
 			<!--Poster-->
