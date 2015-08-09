@@ -140,7 +140,7 @@
                     Da trasformare in: <thumb>\1_jpg_600x800_crop_q85.jpg</thumb>
                     (Movieplayer fornisce un'immagine dimensionata a seconda dell'url richiesto)
 				-->
-				<expression noclean="1">&lt;div class="film-poster"&gt;\s*&lt;img.+?src="([^_"]+)</expression>
+				<expression noclean="1">&lt;div class="film-poster"&gt;\s*&lt;img.+?src="(.+?)_jpg</expression>
 			</RegExp>
 
 			<!--Trailer-->
