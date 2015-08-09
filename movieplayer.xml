@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper framework="11" date="2014-09-16" name="MoviePlayer.it" content="movies" language="en">
+<?xml version="1.0" encoding="UTF-8"?><scraper framework="11" date="2015-08-09" name="MoviePlayer.it" content="movies" language="en">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;\1&lt;/url&gt;" dest="3">
 			<expression trim="1" noclean="1">(http://www\.movieplayer\.it/film/[^_]+_[0-9]+/)</expression>
