@@ -7,6 +7,6 @@
     <setting label="30003" type="bool" id="AltPosters" default="true"/>
     <setting label="30006" type="bool" id="Fan" default="true"/>
     <setting type="sep"/>
-	 <setting label="30004" type="bool" id="posterTMDB" default="true"/>
+	  <setting label="30004" type="bool" id="posterTMDB" default="true"/>
     <setting label="30005" type="bool" id="FanartTMDB" default="true"/> 
 </settings>
